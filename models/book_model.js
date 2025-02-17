@@ -1,19 +1,19 @@
+const db = require('../database');
 const book ={
-    bookData:[
-        {'name' :"C++", 'author' :"Jim Smith"},
-        {'name' :"Java", 'author' :"Lisa Jones"},
-        {'name' :"MySQL", 'author' :"Bob Danieles"}
-    ],
     getAllBooks(callback){
-        callback(this.bookData);
+        return db.query('SELECT * FROM book',callback);
     },
     getOneBook(id,callback){
-        callback(this.bookData[id]);
+        return db.query('SELECT * FROM book WHERE id_book=?',[id],callback);
     },
     addBook(newBook,callback){
-        //seuraavassa lauseessa on sql-injektio
-        let sql="INSERT INTO book VALUES("+newBook.name+","+newBook.author+")";
-        callback(sql);
+        return db.query('INSERT INTO book(name,author,isbn) VALUES(?,?,?)',[newBook.name, newBook.author, newBook.isbn], callback);
+    },
+    updateBook(id, newData, callback){
+        return db.query('UPDATE book SET name=?, author=?, isbn=? WHERE id_book=?',[newData.name, newData.author, newData.isbn, id], callback);
+    },
+    deleteBook(id, callback){
+        return db.query('DELETE FROM book WHERE id_book=?',[id], callback);
     }
 }
 
