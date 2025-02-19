@@ -28,3 +28,10 @@ GRANT ALL ON library.* TO 'netuser'@'localhost';
 </pre>
  </li>
 </ol>
+
+## .env
+
+Tiedostoa .env ei ole järkevää viedä GitHubiin, varsinkaan public tyyppiseen repoon.
+
+Tässä sovelluksessa sinne tulisi rivi:
+MY_TOKEN=kk4j5s9i5j68sjj5kjsi8urjhjh5jhjh5jh5jhjsu4hAJJSLLKSedd

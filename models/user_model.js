@@ -23,6 +23,9 @@ const user ={
     },
     deleteUser(id, callback){
         return db.query('DELETE FROM user WHERE id_user=?',[id], callback);
+    },
+    checkPassword(uname, callback){
+        return db.query('SELECT password FROM user WHERE username=?',[uname], callback);
     }
 }
 
